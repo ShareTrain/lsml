@@ -109,3 +109,33 @@ helper:
 
 logging:
   config: classpath:logback-spring-${spring.profiles.active}.xml
+
+# 特殊任务线程池配置
+timerpool:
+  delay:
+    threadNamePrefix: TIMER_DELAY-
+    corePoolSize: 10
+    maxPoolSize: 200
+    queueCapacity: 1000
+    keeyAliveSecond: 60
+    delayTaskQueueDaemonThreadName: DelayTaskQueueDaemonThread
+  schedule:
+    threadNamePrefix: TIMER_SCHEDULE-
+    poolSize: 50
+    awaitTerminationSeconds: 60
+  async:
+    threadNamePrefix: TIMER_ASYNC-
+    corePoolSize: 10
+    maxPoolSize: 50
+    queueCapacity: 100
+    keeyAliveSecond: 60
+
+ftp:
+  enabled: false
+  pool:
+    timeBetweenEvictionRunsMillis: 60000
+    maxTotal: 1000
+    maxTotalPerKey: 10
+    minIdlePerKey: 5
+    maxIdlePerKey: 10
+    maxWaitMillis: 10000

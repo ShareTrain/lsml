@@ -66,7 +66,7 @@ public interface DictDefinition {
             }
         }
         log.error("【字典查询】根据字典值找不到对应字典, enumClazz={}, value={}", enumClazz, value);
-        throw new AppException(AppStatus.DICT_NOT_EXIST);
+        throw new AppException(AppStatus.OBJECT_NOT_EXIST);
     }
 
     /** 根据Integer值获取枚举实例，如果找不到则抛异常. */
@@ -77,7 +77,7 @@ public interface DictDefinition {
             }
         }
         log.error("【字典查询】根据字典值找不到对应字典, enumClazz={}, value={}", enumClazz, value);
-        throw new AppException(AppStatus.DICT_NOT_EXIST);
+        throw new AppException(AppStatus.OBJECT_NOT_EXIST);
     }
 
     // ==================================================华丽的分割线==================================================
@@ -120,5 +120,87 @@ public interface DictDefinition {
         ;
         public static final String NAME = "product_status";
         @NonNull private Integer value;
+    }
+
+    /** 【仅定义在代码】租户类型. */
+    interface TenantType {
+        String NAME = "tenant_type";
+        /** 平台级别的租户（系统只有一个）. */
+        Integer PLATFORM = 0;
+
+        /** 正常租户（真实入住的租户）. */
+        Integer NORMAL = 1;
+
+        /** 特殊租户（比如内部测试租户等特殊用途）. */
+        Integer SPECIAL = 2;
+
+        /** 临时租户（比如试用租户）. */
+        Integer TEMPORARY = 9;
+    }
+
+    /** 【仅定义在代码】审核状态. */
+    enum MakeCardType implements BaseEnum<Integer> {
+        /** 畅玩卡. */
+        AUDITING(1, "CW"),
+        /** 畅学卡. */
+        PASSED(2, "CX"),
+        ;
+
+        public static String NAME = "make_card_type";
+
+        MakeCardType(Integer value, String code) {
+            this.value = value;
+            this.code = code;
+        }
+
+        private Integer value;
+
+        private String code;
+
+        @Override
+        public Integer getValue() {
+            return value;
+        }
+
+        public String getCode() {
+            return code;
+        }
+    }
+
+    /** 【代码和数据库】门店类型. */
+    enum ShopType implements BaseEnum<Integer> {
+        /** 平台门店. */
+        PLAT_SHOP(0),
+        /** 总部门店. */
+        HQ_SHOP(1),
+        /** 普通门店. */
+        NORMAL_SHOP(2),
+        ;
+
+        public static String NAME = "shop_type";
+
+        ShopType(Integer value) {
+            this.value = value;
+        }
+
+        private Integer value;
+
+        @Override
+        public Integer getValue() {
+            return value;
+        }
+    }
+
+    /** 【代码和数据库】分销商级别 */
+    interface CustomerLevel {
+        String NAME = "customer_level";
+        /** 非分销商 */
+        Integer DEFAULT = 0;
+        /** 掌柜 */
+        Integer SHOPKEEPER = 1;
+        /** 主管 */
+        Integer DIRECTOR = 2;
+        /** 经理 */
+        Integer MANAGER = 3;
     }
 }

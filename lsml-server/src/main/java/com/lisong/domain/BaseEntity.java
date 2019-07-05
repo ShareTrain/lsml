@@ -35,7 +35,7 @@ public abstract class BaseEntity implements Serializable {
 
     /** 更新时间 */
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "update_time", nullable = false)
+    @Column(name = "modify_time", nullable = false)
     private Date updateTime;
 
     @Version

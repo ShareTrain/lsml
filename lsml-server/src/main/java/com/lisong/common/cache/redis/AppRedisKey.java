@@ -25,7 +25,15 @@ public enum AppRedisKey implements AppDynamicRedisKey {
     /** 获取动态key的实例对象. */
     DYNAMIC("DYNAMIC", "示例"),
     EXAMPLE("serverName", "groupName", "example", "示例"),
+    DELAY_QUEUE("DelayQueue", "延迟队列的名称"),
+    MANAGE_USER_TOKEN("manage", "user", "token", "PC端用户Token"),
+    MANAGE_USER_SESSION("manage", "user", "session", "PC端用户登录缓存"),
     MANAGE_PARAM_CACHE("manage", "param", "cache", "系统参数缓存"),
+    MP_ORDER_LOCK("mp", "order", "lock", "订单锁"),
+    MP_REFUND_LOCK("mp", "refund", "lock", "订单退款锁"),
+    MP_CUST_TOKEN("mp", "cust", "token", "小程序客户Token"),
+    MP_CUST_SESSION("mp", "cust", "session", "小程序客户登录缓存"),
+    MP_ORDER_VERIFY_CODE("mp", "order", "verifycode", "小程序订单核销码"),
     ;
 
     private List<String> keyParts = new ArrayList<>();

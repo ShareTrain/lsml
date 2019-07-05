@@ -105,4 +105,52 @@ public interface ConstantDefinition {
         /** 文件夹分隔符或者默认斜杠分隔符. */
         String FOLDER_SEPARATOR = "/";
     }
+
+    abstract class C_SMS {
+        /** 发送验证码 */
+        public static String SEND_VERIFY_CODE = "SMS_152283583";
+
+        public static String USER_ID;
+        public static String PASSWORD;
+        public static String GATE_URL;
+    }
+
+    /** 微信获取access_token地址及微信获取小程序码地址 */
+    interface C_WECHAT {
+        /** 微信获取小程序码url */
+        String QRCODE_URL = "https://api.weixin.qq.com/wxa/getwxacode?access_token=ACCESS_TOKEN";
+
+        String ACCESS_TOKEN = "ACCESS_TOKEN";
+        /** 微信获取access_token的url */
+        String ACCESS_TOKEN_URL =
+                "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
+
+        String APPID = "APPID";
+
+        String APPSECRET = "APPSECRET";
+    }
+
+    /** 公众号相关配置. */
+    abstract class C_PUBLIC {
+        public static String APP_ID = "wxe0a115450973ca60";
+        public static String APP_SECRET = "1dd4a43d204a306c3c124cf8cac5f7c7";
+    }
+
+    /** 小程序相关配置. */
+    abstract class C_MP {
+        public static String APP_ID = "wxe0a115450973ca60";
+        public static String APP_SECRET = "1dd4a43d204a306c3c124cf8cac5f7c7";
+        public static String API_BASE_URL = "https://api.weixin.qq.com";
+        public static String KEY = "a2RhZ2trb28wMTAzMjk0MTlrM2prYWtr";
+        public static String MCHID = "1533769421";
+        public static String WXCALLBACKURL;
+        /** 证书路径 */
+        public static String CERTLOCALPATH = "cert/apiclient_cert.p12";
+        /** 证书密码 */
+        public static String CERTPASSWORD = "1533769421";
+        /** 登录凭证校验接口. */
+        public static String AUTH_CODE_2_SESSION =
+                API_BASE_URL
+                        + "/sns/jscode2session?appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_code";
+    }
 }

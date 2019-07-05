@@ -3,3 +3,12 @@ env: dev
 eureka:
   instance:
     prefer-ip-address: true
+
+common:
+  config:
+    sms:
+      userId: J50571
+      password: 893671
+      gateUrl: http://61.130.7.220:8023/MWGate/wmgw.asmx/
+    mpConfig:
+      wxCallbackUrl: http://exp.mynatapp.cc/spread/mp/pay/notify
