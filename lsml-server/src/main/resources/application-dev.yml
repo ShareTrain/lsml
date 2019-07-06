@@ -11,4 +11,4 @@ common:
       password: 893671
       gateUrl: http://61.130.7.220:8023/MWGate/wmgw.asmx/
     mpConfig:
-      wxCallbackUrl: http://exp.mynatapp.cc/spread/mp/pay/notify
+      wxCallbackUrl: http://exp.mynatapp.cc/lsml/mp/pay/notify

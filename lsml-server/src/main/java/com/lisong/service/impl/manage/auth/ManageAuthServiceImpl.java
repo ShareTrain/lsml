@@ -5,16 +5,22 @@ import com.lisong.common.ConstantDefinition;
 import com.lisong.common.DictDefinition;
 import com.lisong.common.JsonConverter;
 import com.lisong.common.cache.redis.AppRedisKey;
-import com.lisong.util.UrlUtils;
 import com.lisong.component.jwt.JwtTokenContextHolder;
 import com.lisong.component.jwt.JwtTokenModel;
 import com.lisong.component.jwt.JwtTokenUtil;
+import com.lisong.domain.user.Menu;
+import com.lisong.domain.user.Role;
+import com.lisong.domain.user.Shop;
 import com.lisong.domain.user.Userinfo;
 import com.lisong.exception.AppStatus;
+import com.lisong.repository.MenuRepository;
+import com.lisong.repository.RoleRepository;
+import com.lisong.repository.ShopRepository;
 import com.lisong.repository.UserinfoRepository;
 import com.lisong.service.api.manage.auth.ManageAuthService;
 import com.lisong.service.req.manage.auth.*;
 import com.lisong.service.res.manage.auth.*;
+import com.lisong.util.UrlUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +31,11 @@ import org.springframework.util.DigestUtils;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -37,6 +46,9 @@ public class ManageAuthServiceImpl implements ManageAuthService {
     @Autowired private JwtTokenUtil jwtTokenUtil;
 
     @Autowired UserinfoRepository userinfoRepository;
+    @Autowired RoleRepository roleRepository;
+    @Autowired MenuRepository menuRepository;
+    @Autowired ShopRepository shopRepository;
 
     @Transactional(readOnly = true)
     @Override
@@ -89,12 +101,8 @@ public class ManageAuthServiceImpl implements ManageAuthService {
     @Override
     public ManageLoadPermissionResponse loadPermission(ManageLoadPermissionRequest request) {
         ManageLoadPermissionResponse response = new ManageLoadPermissionResponse();
-        /* Role role =
-                Role.getRepository()
-                        .createCriteriaQuery(Role.class)
-                        .eq(DictDefinition.Deleted.NAME, DictDefinition.Deleted.NO)
-                        .eq("id", request.getRoleId())
-                        .singleResult();
+        Role role =
+                roleRepository.findByIdAndDeleted(request.getRoleId(), DictDefinition.Deleted.NO);
         if (role == null) {
             log.error("【用户权限加载】角色不存在, role_id={}", request.getRoleId());
             throw new AppException(AppStatus.OBJECT_NOT_EXIST, "角色不存在");
@@ -105,11 +113,7 @@ public class ManageAuthServiceImpl implements ManageAuthService {
                         .map(Long::valueOf)
                         .collect(Collectors.toList());
         List<Menu> menuList =
-                Menu.getRepository()
-                        .createCriteriaQuery(Menu.class)
-                        .eq(DictDefinition.Deleted.NAME, DictDefinition.Deleted.NO)
-                        .in("id", menuIdList)
-                        .list();
+                menuRepository.findByIdInAndDeleted(menuIdList, DictDefinition.Deleted.NO);
         List<ManageLoadPermissionResponse.Menu> permissionMenuList =
                 menuList.stream()
                         .map(
@@ -127,24 +131,20 @@ public class ManageAuthServiceImpl implements ManageAuthService {
         permission.setAcct(request.getAcct());
         permission.setMenus(permissionMenuList);
         permission.setOpts(role.getOpts());
-        response.setData(permission);*/
+        response.setData(permission);
         return response;
     }
 
     @Override
     public ManageFindMgrShopsResponse findMgrShops(ManageFindMgrShopsRequest request) {
         ManageFindMgrShopsResponse response = new ManageFindMgrShopsResponse();
-        /*String mgrShops = request.getMgrShops();
+        String mgrShops = request.getMgrShops();
 
         List<Long> shopIdList =
                 Arrays.stream(mgrShops.split(",")).map(Long::valueOf).collect(Collectors.toList());
 
         List<Shop> shopList =
-                Shop.getRepository()
-                        .createCriteriaQuery(Shop.class)
-                        .eq(DictDefinition.Deleted.NAME, DictDefinition.Deleted.NO)
-                        .in("id", shopIdList)
-                        .list();
+                shopRepository.findByIdInAndDeleted(shopIdList, DictDefinition.Deleted.NO);
 
         List<ManageFindMgrShopsResponse.ShopItem> shopItemList =
                 shopList.stream()
@@ -161,7 +161,7 @@ public class ManageAuthServiceImpl implements ManageAuthService {
 
         ManageFindMgrShopsResponse.Item item = new ManageFindMgrShopsResponse.Item();
         item.setMgrShops(shopItemList);
-        response.setData(item);*/
+        response.setData(item);
         return response;
     }
 

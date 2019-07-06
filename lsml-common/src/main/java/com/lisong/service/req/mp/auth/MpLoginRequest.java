@@ -4,8 +4,8 @@ import com.coding.helpers.tool.cmp.api.AppRequest;
 import com.lisong.service.res.mp.auth.MpLoginResponse;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.validator.constraints.NotBlank;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Getter

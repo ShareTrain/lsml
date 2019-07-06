@@ -41,10 +41,10 @@ public interface ConstantDefinition {
 
     interface C_COMMON {
         /** 系统代号. */
-        String SYSTEM_CODE = "SELL_PRODUCT";
+        String SYSTEM_CODE = "LSML";
 
         /** 系统名称 */
-        String SYSTEM_NAME = "SELL_PRODUCT";
+        String SYSTEM_NAME = "LSML";
 
         /** 系统中使用到的默认编码 */
         Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;

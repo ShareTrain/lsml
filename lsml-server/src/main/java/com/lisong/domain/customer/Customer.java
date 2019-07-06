@@ -3,6 +3,8 @@ package com.lisong.domain.customer;
 import com.lisong.domain.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -13,6 +15,8 @@ import java.util.Date;
 @Table(name = "customer")
 @Getter
 @Setter
+@DynamicInsert
+@DynamicUpdate
 public class Customer extends BaseEntity {
 
     private static final long serialVersionUID = 8676497958056167122L;

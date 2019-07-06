@@ -33,13 +33,13 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
         InterceptorRegistration registration = registry.addInterceptor(securityInterceptor);
         registration.addPathPatterns("/**");
         registration.excludePathPatterns("/sms/**");
-        registration.excludePathPatterns("/spread/manage/uploadController/**");
-        registration.excludePathPatterns("/spread/wechat/**");
+        registration.excludePathPatterns("/lsml/manage/uploadController/**");
+        registration.excludePathPatterns("/lsml/wechat/**");
         registration.excludePathPatterns("/wechat/cardActive");
-        registration.excludePathPatterns("/spread/manage/makecard/**");
-        registration.excludePathPatterns("/spread/manage/auth/login");
-        registration.excludePathPatterns("/spread/mp/auth/login");
-        registration.excludePathPatterns("/spread/mp/pay/notify");
+        registration.excludePathPatterns("/lsml/manage/makecard/**");
+        registration.excludePathPatterns("/lsml/manage/auth/login");
+        registration.excludePathPatterns("/lsml/mp/auth/login");
+        registration.excludePathPatterns("/lsml/mp/pay/notify");
         super.addInterceptors(registry);
     }
 

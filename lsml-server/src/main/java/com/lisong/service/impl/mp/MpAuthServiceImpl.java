@@ -105,7 +105,7 @@ public class MpAuthServiceImpl implements MpAuthService {
                 customer.setUnionId(unionId);
             }
         }
-        customerRepository.save(customer);
+        customer = customerRepository.save(customer);
 
         // 令牌缓存
         JwtTokenModel model = new JwtTokenModel();

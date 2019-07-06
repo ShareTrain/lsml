@@ -9,9 +9,9 @@ public class JwtTokenContextHolder {
 
     private static AntPathMatcher antPathMatcher = new AntPathMatcher();
 
-    public static final String MP_PATH_PATTERN = "/spread/mp/**";
+    public static final String MP_PATH_PATTERN = "/lsml/mp/**";
 
-    public static final String MANAGE_PATH_PATTERN = "/spread/manage/**";
+    public static final String MANAGE_PATH_PATTERN = "/lsml/manage/**";
 
     public static boolean isMpRequest(String url) {
         return antPathMatcher.match(MP_PATH_PATTERN, url);
