@@ -35,7 +35,7 @@ public class BigDecimalUtils {
 
     // 默认的格式化字符样式 “#.00”  还可以是像“#.0000”
     public static final String DEFAULT_FORMAT_PATTERN = "#,##0.00";
-    public static final String SMPLE_FORMAT_PATTERN = "#.00";
+    public static final String SMPLE_FORMAT_PATTERN = "#.##";
 
     public static BigDecimal add(double val, double... vals) {
         BigDecimal bdVal = BigDecimal.valueOf(val);
@@ -220,5 +220,23 @@ public class BigDecimalUtils {
 
     public static BigDecimal round(double val, int scale) {
         return div(val, 1, scale);
+    }
+
+    /**
+     * 获取百分比，注意会四舍五入.
+     *
+     * <p>创建时间: <font style="color:#00FFFF">20190715 18:22</font><br>
+     * 示例：0.05552->5.56%.
+     *
+     * @param val - 需要百分比的数字
+     * @return java.lang.String
+     * @author Rushing0711
+     * @since 1.0.0
+     */
+    public static String getPercent(double val) {
+        /*NumberFormat nf   =   NumberFormat.getPercentInstance();     注释掉的也是一种方法
+        nf.setMinimumFractionDigits( 2 );        保留到小数点后几位
+        result=nf.format(tempresult);*/
+        return format(val, "0.00%");
     }
 }

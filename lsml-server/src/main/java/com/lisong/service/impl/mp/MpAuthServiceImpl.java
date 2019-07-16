@@ -9,7 +9,7 @@ import com.lisong.common.cache.redis.AppRedisKey;
 import com.lisong.component.http.HttpTools;
 import com.lisong.component.jwt.JwtTokenModel;
 import com.lisong.component.jwt.JwtTokenUtil;
-import com.lisong.domain.customer.Customer;
+import com.lisong.domain.appoint.customer.Customer;
 import com.lisong.exception.AppStatus;
 import com.lisong.repository.CustomerRepository;
 import com.lisong.service.api.manage.mp.MpAuthService;
@@ -79,10 +79,9 @@ public class MpAuthServiceImpl implements MpAuthService {
                 customerRepository.findByOpenIdAndDeleted(openId, DictDefinition.Deleted.NO);
         if (customer == null) {
             customer = new Customer();
-            customer.setIsVip(DictDefinition.YesOrNo.NO);
-            customer.setIsSpreader(DictDefinition.YesOrNo.NO);
-            customer.setCurrentLevel(DictDefinition.CustomerLevel.DEFAULT);
             customer.setName(request.getNickname());
+            customer.setVipLevel(DictDefinition.VipLevel.VISITOR);
+            customer.setRegistStatus(DictDefinition.YesOrNo.NO);
             customer.setNickname(request.getNickname());
             customer.setSex(request.getSex());
             customer.setAvatar(request.getAvator());

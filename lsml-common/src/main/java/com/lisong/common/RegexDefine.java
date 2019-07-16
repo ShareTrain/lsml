@@ -10,7 +10,7 @@
  * <Version>        <DateSerial>        <Author>        <Description>
  * 1.0.0            20180424-01         Rushing0711     M201804241455 新建文件
  ********************************************************************************/
-package com.lisong.component.regex;
+package com.lisong.common;
 
 import java.util.regex.Pattern;
 

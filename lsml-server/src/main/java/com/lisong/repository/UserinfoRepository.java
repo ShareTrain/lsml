@@ -1,6 +1,6 @@
 package com.lisong.repository;
 
-import com.lisong.domain.user.Userinfo;
+import com.lisong.domain.appoint.user.Userinfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserinfoRepository extends JpaRepository<Userinfo, Long> {

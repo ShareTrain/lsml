@@ -12,6 +12,7 @@
  ********************************************************************************/
 package com.lisong.common;
 
+import java.math.BigDecimal;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
@@ -41,10 +42,10 @@ public interface ConstantDefinition {
 
     interface C_COMMON {
         /** 系统代号. */
-        String SYSTEM_CODE = "LSML";
+        String SYSTEM_CODE = "spread";
 
         /** 系统名称 */
-        String SYSTEM_NAME = "LSML";
+        String SYSTEM_NAME = "spread";
 
         /** 系统中使用到的默认编码 */
         Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
@@ -72,16 +73,42 @@ public interface ConstantDefinition {
         /** 层级关系中，同层排序值sort的初始值. */
         Integer TOP_SORT_ORDER = 1;
 
+        Integer INTEGER_ONE_NEGATIVE = -1;
         Integer INTEGER_ZERO = 0;
         Integer INTEGER_ONE = 1;
         Integer INTEGER_TWO = 2;
+        Integer INTEGER_THREE = 3;
+        Integer INTEGER_FOUR = 4;
+        Integer INTEGER_FIVE = 5;
+        Integer INTEGER_SIX = 6;
+        Integer INTEGER_SEVEN = 7;
+        Integer INTEGER_EIGHT = 8;
+        Integer INTEGER_NINE = 9;
+        Integer INTEGER_TEN = 10;
+        Long LONG_ONE_NEGATIVE = -1L;
         Long LONG_ZERO = 0L;
         Long LONG_ONE = 1L;
+        Long LONG_TWO = 2L;
+        Long LONG_THREE = 3L;
+        Long LONG_FOUR = 4L;
+        Long LONG_FIVE = 5L;
+        Long LONG_SIX = 6L;
+        Long LONG_SEVEN = 7L;
+        Long LONG_EIGHT = 8L;
+        Long LONG_NINE = 9L;
+        Long LONG_TEN = 10L;
         Boolean BOOLEAN_TRUE = true;
         Boolean BOOLEAN_FALSE = false;
+        BigDecimal DECIMAL_ZERO = BigDecimal.ZERO;
+
+        /** 提现最小金额. */
+        BigDecimal DECIMAL_TEN = new BigDecimal(10);
 
         /** 季度平均天数. */
         Integer QUARTER_AVERAGE_DAYS = 90;
+
+        /** 分段尺寸, 1000. */
+        Integer SECTION_SIZE = 1000;
 
         /** 排序 */
         String ASC = "asc";
@@ -105,6 +132,7 @@ public interface ConstantDefinition {
         /** 文件夹分隔符或者默认斜杠分隔符. */
         String FOLDER_SEPARATOR = "/";
     }
+
 
     abstract class C_SMS {
         /** 发送验证码 */

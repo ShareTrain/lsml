@@ -1,6 +1,6 @@
 package com.lisong.repository;
 
-import com.lisong.domain.user.Menu;
+import com.lisong.domain.appoint.user.Menu;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

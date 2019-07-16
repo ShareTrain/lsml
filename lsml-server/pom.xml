@@ -120,6 +120,12 @@
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpasyncclient</artifactId>
         </dependency>
+
+        <!--时间类的引用-->
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+        </dependency>
         <!-- 引入三方包 end -->
 
         <!-- 引入二方包 beg -->
